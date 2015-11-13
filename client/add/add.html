@@ -1,5 +1,6 @@
-<div class="container">
+<div class="container" ng-app="divestop.add">
   <h4>Dive Site</h4>
+
   <div class="row addSiteForm" ng-controller="AddSiteController as form">
     <form name="addSite" class="addSite">
 
@@ -9,68 +10,35 @@
     </div>
 
     <div class="input-field">
-      <input id="description" type="text" required ng-model="form.site.description" />
-      <label for="description"> Why Should We Dive Here? (Description)</label>
-    </div>
-
-    <div class="input-field">
       <input id="address" type="text" required ng-model="form.site.address" />
       <label for="address"> Where Are We Going Diving? (Address)</label>
     </div>
 
 
-    <div class="row">
+    <div class="row thumbs">
       <!-- <div class="input-field col s12 m4">
         <input id="depth" type="text" required ng-model="form.site.maxDepth">
         <label for="depth">Address </label>
       </div> -->
 
-      <div class="input-field col s12 m6">
+      <div class="input-field col s12 m4">
         <input type="text" disabled required ng-model="form.site.coordinates.lat" placeholder="Click Map!">
         <label class="active">Latitude</label>
       </div>
-      <div class="input-field col s12 m6">
+      <div class="input-field col s12 m4">
         <input type="text" disabled required ng-model="form.site.coordinates.lng" placeholder="Click Map!">
         <label class="active">Longitude</label>
       </div>
-    </div>
-
-    <div class="row">
-
-      <div class="col s12 m6">
-        <div class="row">
-          <div class="input-field col s10">
-            <input id="aquatic-life" type="text" ng-model="form.newAquaticLife" ng-enter="form.addAquaticLife()">
-            <label for="aquatic-life">Aquatic Life (What Did You Drink?) </label>
-          </div>
-          <div class="col s2">
-            <a class="btn-floating" type="button" ng-click="form.addAquaticLife()">
-            <i class="material-icons">add</i></a>
-          </div>
-        </div>
-        <div class="chip" ng-repeat="aquaticLife in form.site.aquaticLife">
-          {{aquaticLife}}
-          <i class="material-icons" ng-click="form.removeAquaticLife($index)">close</i>
-        </div>
-      </div>
-
-      <div class="col s12 m6">
-        <div class="row">
-          <div class="input-field col s10">
-            <input id="features" type="text" ng-model="form.newFeature" ng-enter="form.addFeature()">
-            <label for="features">Unique Dive Features (Ex: Popcorn)</label>
-          </div>
-          <div class="col s2">
-            <a class="btn-floating" type="button" ng-click="form.addFeature()">
-            <i class="material-icons">add</i></a>
-          </div>
-        </div>
-        <div class="chip" ng-repeat="feature in form.site.features">
-          {{feature}}
-          <i class="material-icons" ng-click="form.removeFeature($index)">close</i>
-        </div>
+      <div class="input-field col s12 m4">
+        <ul class="thumbs">
+          <div> Rate The Dive </div>
+          <li  ng-class="{thumb_up: thumbUpClick}"><i ng-click="thumbUp()" class="medium material-icons thumb">thumb_up</i></li>
+          <li ng-class="{thumb_down: thumbDownClick}"><i  ng-click="thumbDown()" class="medium material-icons thumb">thumb_down</i></li>
+        </ul>
       </div>
     </div>
+
+    
     <div class="row">
       <div class="file-field input-field col m11 s10">
         <div class="btn">

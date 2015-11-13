@@ -12,6 +12,7 @@ angular.module('divestop.map', [])
 
     $scope.toggle = false;
     $scope.toggleMe = function() {
+      console.log('toggling')
       $scope.toggle = !$scope.toggle;
 
       if($scope.toggle) {

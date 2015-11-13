@@ -1,18 +1,51 @@
 // Controller for the add site form
 
 angular.module('divestop.addsite', [])
-  .controller('AddSiteController', function(SharedProperties, DiveSites, Photos, AppMap) {
+  .controller('AddSiteController', function(SharedProperties, DiveSites, Photos, AppMap, $scope) {
+    
+    // this.site = {};
+    // this.site.vicinity: "916 Grant Avenue, San Francisco"
+    // this.site.geometry.locations.J: "37.795484"
+    // this.site.geometry.locations.M: "-122.40637400000003"
+    // this.site.photos.html_attributes: '<href src="https://maps.google.com/maps/contrib/110129543306744989778">'
+    // this.site.name: "Li Po Cocktail Lounge"
+    // this.site.vote: 1
+
     this.site = {};
-    this.site.features = [];
-    this.site.aquaticLife = [];
-    this.site.photos = [];
-    this.site.coordinates = SharedProperties.newSite;
-    this.showForm = SharedProperties.showForm;
-    this.site.location = "key largo";
-    this.site.comments = "testComment";
-    this.site.gradient = "tG";
+    this.site.vicinity = 
+    this.site.geometry.locations.J = 
+    this.site.geometry.locations.M = 
+    this.site.photos.html_attributes = 
+    this.site.name = 
+    this.site.vote = 
+
+
+    // this.site.features = [];
+    // this.site.aquaticLife = [];
+    // this.site.photos = [];
+    // this.site.coordinates = SharedProperties.newSite;
+    // this.showForm = SharedProperties.showForm;
+    // this.site.location = "key largo";
+    // this.site.comments = "testComment";
+    // this.site.gradient = "tG";
+    // this.site.thumbUp = $scope.thumbUpClick;
+    // this.site.thumbDown = $scope.thumbDownClick;
 
     // this.templateUrl = 'add/add.html';
+
+    $scope.thumbUpClick = false;
+    $scope.thumbUp = function() {
+      if(!$scope.thumbDownClick) {
+        $scope.thumbUpClick = !$scope.thumbUpClick;
+      }
+    };
+
+    $scope.thumbDownClick = false;
+    $scope.thumbDown = function() {
+      if(!$scope.thumbUpClick) {
+        $scope.thumbDownClick = !$scope.thumbDownClick;
+      }
+    };
 
     var addToArray = function(item, array) {
       if(array.indexOf(item) === -1 && !isBlank(item)){
@@ -44,16 +77,20 @@ angular.module('divestop.addsite', [])
       this.site.photos = [];
       this.site.coordinates.lat = undefined;
       this.site.coordinates.lng = undefined;
+      this.site.thumbUp = 1;
+      this.site.thumbDown = 0;
     };
 
     this.addSite = function() {
       // Deep copy the object so we can stringify coordinates before passing to server
       var newSite = deepCopy(this.site);
+
       AppMap.addMarker(newSite, SharedProperties.map);
-      this.hideForm();
+
       DiveSites.postNewSite(newSite).then(function(data) {
         this.clearForm();
       }.bind(this));
+      
     };
 
     this.removePhoto = function(index) {
