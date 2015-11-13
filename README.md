@@ -1,35 +1,29 @@
 # dulcetgnome [![Build Status](https://travis-ci.org/dulcetgnome/dulcetgnome.svg?branch=master)](https://travis-ci.org/dulcetgnome/dulcetgnome)
 Greenfield Project
 
-> Pithy project description
+Web application that enables users to search across the globe for dive bars and add their favorite dive bars to the map
 
 ## Team
 
-  - Product Owner: Ron Fenolio
-  - Scrum Master: Corey Roy
-  - Development Team Members: Steven Lundy, Garrett Maring
+  - Product Owner: Tim Scheys
+  - Scrum Master: Edgar Padon
+  - Development Team Members: Tommy Sander, Bowen Yang, Tim Scheys, Edgar Pabon
 
 ## Table of Contents
 
-1. [Usage](#Usage)
+1. [Team](#team)
 1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
     1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
 
-## Usage
 
-> Some usage instructions
 
 ## Requirements
 
 - Node 0.10.x
 - Redis 2.6.x
 - Postgresql 9.1.x
-- etc
-- etc
 
 ## Development
 
@@ -59,28 +53,10 @@ All files are built to the client/build/ directory. The javascript file and css 
 
 In addition, we are using Travis for continuous integration. Whenever a PR is opened, Travis will run all tests, lint, and create a temporary database (for further testing). If this passes the status of the PR will update from 'pending' to 'open'.
 
-###API
-
-> /api/sites - [GET]
-
-  Request to here will return all dive sites in the world as a JSON object with the following properties:
-  -_id
-  -site
-  -location
-  -coordinates
-  -max-depth
-  -gradient
-  -description
-  -aquatic_life (as array)
-  -pictures (as array)
-  -features (as array)
-  -comments
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/CrimeVisualizer/DiveStop/issues)
 
 
-## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
